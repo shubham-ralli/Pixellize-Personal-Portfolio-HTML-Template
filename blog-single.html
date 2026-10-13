@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Writing CSS that scales with your team — practical patterns for maintainable stylesheets." />
+  <title>Writing CSS that scales — Pixellize</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+  <meta name="theme-color" content="#c4f135" /><link rel="stylesheet" href="assets/css/style.css" />
+
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("theme") ||
+          (window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+        document.documentElement.setAttribute("data-theme", t);
+        var a = localStorage.getItem("accent"); if (a && a !== "lime") document.documentElement.setAttribute("data-accent", a);
+        if (localStorage.getItem("dir") === "rtl") document.documentElement.setAttribute("dir", "rtl");
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- ===== Header / Nav ===== -->
+  <header class="site-header scrolled" id="header">
+    <div class="container nav-inner">
+      <a href="index.html" class="brand">Pixel<span>lize</span></a>
+
+      <nav class="nav" id="nav">
+        <a href="index.html#about" class="nav-link">About</a>
+        <a href="index.html#services" class="nav-link">Services</a>
+        <a href="index.html#portfolio" class="nav-link">Portfolio</a>
+        <a href="index.html#pricing" class="nav-link">Pricing</a>
+        <div class="nav-item has-dropdown">
+          <a href="blog.html" class="nav-link">Blog <i class="caret"></i></a>
+          <ul class="dropdown">
+            <li><a href="blog.html">
+              <span class="dd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="7" height="7" rx="1.5"/><rect x="14" y="4" width="7" height="7" rx="1.5"/><rect x="3" y="15" width="7" height="5" rx="1.5"/><rect x="14" y="15" width="7" height="5" rx="1.5"/></svg></span>
+              <span class="dd-txt"><strong>All Articles</strong><span>Browse every post</span></span>
+            </a></li>
+            <li><a href="blog-single.html">
+              <span class="dd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l5 5v12a1 1 0 01-1 1H7a1 1 0 01-1-1V4a1 1 0 011-1z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 16.5h4"/></svg></span>
+              <span class="dd-txt"><strong>Single Post</strong><span>Read a sample article</span></span>
+            </a></li>
+          </ul>
+        </div>
+        <div class="nav-item has-dropdown">
+          <a href="404.html" class="nav-link">Pages <i class="caret"></i></a>
+          <ul class="dropdown">
+            <li><a href="404.html">
+              <span class="dd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg></span>
+              <span class="dd-txt"><strong>404 Error</strong><span>Page not found</span></span>
+            </a></li>
+            <li><a href="coming-soon.html">
+              <span class="dd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+              <span class="dd-txt"><strong>Coming Soon</strong><span>Launch countdown</span></span>
+            </a></li>
+          </ul>
+        </div><a href="index.html#contact" class="nav-link">Contact</a>
+        <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark and light mode">
+          <span class="ic-moon">☾</span><span class="ic-sun">☀</span>
+        </button>
+        <a href="index.html#contact" class="btn btn-sm nav-cta">Hire Me</a>
+      </nav>
+
+      <button type="button" class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ===== Post hero ===== -->
+  <article>
+    <header class="post-hero">
+      <div class="container">
+        <nav class="breadcrumb" style="justify-content:flex-start;" aria-label="Breadcrumb">
+          <a href="index.html">Home</a><span>/</span><a href="blog.html">Blog</a><span>/</span><span>Article</span>
+        </nav>
+        <span class="post-meta">Dev · 5 min read</span>
+        <h1>Writing CSS that scales with your team</h1>
+        <div class="post-byline">
+          <img src="assets/images/avatar-1.jpg" width="160" height="160" alt="" />
+          <span><strong>Alex Carter</strong>Published on March 14, 2026</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="post-feature">
+      <img src="assets/images/blog-1.jpg" width="800" height="500" alt="Code on a laptop screen" />
+    </div>
+
+    <!-- ===== Article content ===== -->
+    <div class="article">
+      <p>CSS is easy to write and hard to maintain. On a solo project you can get away with almost anything, but the moment a second developer joins, small inconsistencies start to compound into real problems. Here are the patterns I rely on to keep stylesheets predictable as a team and a codebase grow.</p>
+
+      <h2>Start with design tokens</h2>
+      <p>Before writing a single component, define your primitives: colors, spacing, typography and radii as CSS custom properties on <code>:root</code>. Everything downstream references these tokens instead of hard-coded values, so a theme change is a one-line edit rather than a find-and-replace marathon.</p>
+
+      <blockquote>“The best CSS architecture is the one your whole team can follow without thinking about it.”</blockquote>
+
+      <h2>Keep specificity flat</h2>
+      <p>Deeply nested selectors are the single biggest source of CSS pain. Favor a single class per component and avoid chaining selectors more than one level deep. When specificity stays flat, overriding styles is trivial and you almost never reach for <code>!important</code>.</p>
+
+      <h3>A quick checklist</h3>
+      <ul>
+        <li>One class, one responsibility.</li>
+        <li>No IDs for styling.</li>
+        <li>Co-locate component styles with the component.</li>
+        <li>Name by intent, not by appearance (<em>.btn-primary</em>, not <em>.btn-green</em>).</li>
+      </ul>
+
+      <h2>Document the system</h2>
+      <p>A design system that lives only in one person's head isn't a system. Even a simple style guide page — showing your buttons, forms and spacing scale — saves hours of back-and-forth and keeps new contributors on the rails.</p>
+
+      <p>Adopt these habits early and your stylesheet stays an asset instead of slowly becoming the thing nobody wants to touch. For more, read the <a href="blog.html">rest of the articles</a> on the blog.</p>
+    </div>
+
+    <!-- Tags -->
+    <div class="article-tags">
+      <a href="#">CSS</a>
+      <a href="#">Architecture</a>
+      <a href="#">Design Systems</a>
+      <a href="#">Frontend</a>
+    </div>
+
+    <!-- Share -->
+    <div class="share-bar" id="shareBar">
+      <span class="share-label">Share this article</span>
+      <div class="share-links">
+        <a class="share-btn share-fb" data-share="facebook" href="#" target="_blank" rel="noopener" aria-label="Share on Facebook">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13 22v-8h3l.5-3.5H13V8.3c0-1 .3-1.7 1.8-1.7H17V3.4c-.4-.1-1.5-.2-2.7-.2-2.6 0-4.3 1.6-4.3 4.5v2.8H7V14h3v8h3z"/></svg>
+        </a>
+        <a class="share-btn share-x" data-share="twitter" href="#" target="_blank" rel="noopener" aria-label="Share on X">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 3h3l-6.6 7.5L21.8 21h-5.9l-4.3-5.6L6.5 21H3.5l7-8L2.5 3h6l3.9 5.1L17.5 3zm-1 16h1.7L7.6 4.7H5.8L16.5 19z"/></svg>
+        </a>
+        <a class="share-btn share-in" data-share="linkedin" href="#" target="_blank" rel="noopener" aria-label="Share on LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.9 8.5H3.9V21h3V8.5zM5.4 3.5a1.7 1.7 0 100 3.5 1.7 1.7 0 000-3.5zM21 21h-3v-6.6c0-1.6-.6-2.6-2-2.6-1.1 0-1.7.7-2 1.5-.1.3-.1.6-.1 1V21h-3V8.5h3v1.3c.4-.6 1.2-1.5 2.9-1.5 2.1 0 3.6 1.4 3.6 4.3V21z"/></svg>
+        </a>
+        <a class="share-btn share-wa" data-share="whatsapp" href="#" target="_blank" rel="noopener" aria-label="Share on WhatsApp">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 00-8.6 15L2 22l5.1-1.3A10 10 0 1012 2zm0 18a8 8 0 01-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1112 20zm4.5-6c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.5.1-.6.8-.8 1-.3.2-.6.1a6.5 6.5 0 01-3.2-2.8c-.2-.4.2-.4.6-1.2.1-.2 0-.4 0-.5l-.8-1.8c-.2-.4-.4-.4-.5-.4h-.5a1 1 0 00-.7.3A3 3 0 006 8.3a5.2 5.2 0 001.1 2.7 11.8 11.8 0 004.6 4c2 .8 2 .5 2.4.5a2.6 2.6 0 001.7-1.2 2.1 2.1 0 00.1-1.2c0-.1-.2-.1-.5-.3z"/></svg>
+        </a>
+        <button type="button" class="share-btn share-copy" id="copyLink" aria-label="Copy link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 007 0l2-2a5 5 0 00-7-7l-1 1"/><path d="M14 11a5 5 0 00-7 0l-2 2a5 5 0 007 7l1-1"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Author -->
+    <div class="author-card">
+      <img src="assets/images/avatar-1.jpg" width="160" height="160" alt="Alex Carter" />
+      <div>
+        <h3>Alex Carter</h3>
+        <p>Full-stack developer and freelancer writing about clean code, design systems and shipping products that last.</p>
+      </div>
+    </div>
+  </article>
+
+  <!-- ===== Comments ===== -->
+  <section class="comments">
+    <h2 class="comments-title"><span id="commentCount">3</span> Comments</h2>
+
+    <ul class="comment-list" id="commentList">
+      <li class="comment">
+        <div class="comment-card">
+          <div class="comment-head">
+            <img class="avatar" src="assets/images/avatar-2.jpg" width="160" height="160" alt="" />
+            <div class="comment-id">
+              <strong>Sarah Kim</strong>
+              <span class="comment-date">March 15, 2026</span>
+            </div>
+            <button type="button" class="comment-reply">↩ Reply</button>
+          </div>
+          <p>This is exactly what our team needed. The point about keeping specificity flat saved us from a mountain of <em>!important</em> overrides. Bookmarked!</p>
+        </div>
+        <ul class="comment-children">
+          <li class="comment">
+            <div class="comment-card">
+              <div class="comment-head">
+                <img class="avatar" src="assets/images/avatar-1.jpg" width="160" height="160" alt="" />
+                <div class="comment-id">
+                  <strong>Alex Carter <em class="comment-author-tag">Author</em></strong>
+                  <span class="comment-date">March 15, 2026</span>
+                </div>
+                <button type="button" class="comment-reply">↩ Reply</button>
+              </div>
+              <p>Thanks Sarah! Flat specificity is the one habit I'd keep if I could only pick one. Glad it helped.</p>
+            </div>
+          </li>
+        </ul>
+      </li>
+      <li class="comment">
+        <div class="comment-card">
+          <div class="comment-head">
+            <img class="avatar" src="assets/images/avatar-3.jpg" width="160" height="160" alt="" />
+            <div class="comment-id">
+              <strong>Marcus Dev</strong>
+              <span class="comment-date">March 16, 2026</span>
+            </div>
+            <button type="button" class="comment-reply">↩ Reply</button>
+          </div>
+          <p>Great read. Would love a follow-up on how you document design tokens across a larger team — that's where we keep running into drift.</p>
+        </div>
+      </li>
+    </ul>
+
+    <!-- Comment form -->
+    <div class="comment-form-wrap">
+      <h3>Leave a comment</h3>
+      <form class="comment-form" id="commentForm" novalidate>
+        <div class="comment-row">
+          <div class="field">
+            <input type="text" id="cName" name="name" placeholder=" " required />
+            <label for="cName">Your Name</label>
+          </div>
+          <div class="field">
+            <input type="email" id="cEmail" name="email" placeholder=" " required />
+            <label for="cEmail">Your Email</label>
+          </div>
+        </div>
+        <div class="field">
+          <textarea id="cMessage" name="message" rows="5" placeholder=" " required></textarea>
+          <label for="cMessage">Your Comment</label>
+        </div>
+        <button type="submit" class="btn">Post Comment</button>
+        <p class="form-note" id="cNote" role="status"></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- ===== Related posts ===== -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow">Keep Reading</p>
+        <h2 class="section-title">Related articles</h2>
+      </div>
+      <div class="grid grid-3">
+        <article class="post reveal">
+          <a href="blog-single.html" class="post-img"><img src="assets/images/blog-2.jpg" width="800" height="500" alt="Developer typing" loading="lazy" /></a>
+          <div class="post-body">
+            <span class="post-meta">JavaScript · 7 min read</span>
+            <h3><a href="blog-single.html">Async patterns you should actually use</a></h3>
+            <p>A no-nonsense guide to promises, async/await and avoiding callback hell.</p>
+          </div>
+        </article>
+        <article class="post reveal">
+          <a href="blog-single.html" class="post-img"><img src="assets/images/work-design.jpg" width="800" height="600" alt="Design system" loading="lazy" /></a>
+          <div class="post-body">
+            <span class="post-meta">Design · 8 min read</span>
+            <h3><a href="blog-single.html">Design tokens: a practical starting point</a></h3>
+            <p>Set up tokens that keep design and code in sync without the overhead.</p>
+          </div>
+        </article>
+        <article class="post reveal">
+          <a href="blog-single.html" class="post-img"><img src="assets/images/blog-3.jpg" width="800" height="500" alt="Team collaborating" loading="lazy" /></a>
+          <div class="post-body">
+            <span class="post-meta">Career · 4 min read</span>
+            <h3><a href="blog-single.html">Lessons from 8 years of freelancing</a></h3>
+            <p>What I wish I knew about clients, pricing and shipping on time.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <a href="index.html" class="brand">Pixel<span>lize</span></a>
+      <p>© <span id="year"></span> Alex Carter. All rights reserved.</p>
+      <a href="#" class="to-top" aria-label="Back to top">↑</a>
+    </div>
+  </footer>
+
+  <!-- Style switcher (accent demo) -->
+  <div class="style-switcher" id="styleSwitcher">
+    <button type="button" class="ss-toggle" id="ssToggle" aria-label="Open style switcher" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r="1.5" fill="currentColor"/><circle cx="17.5" cy="10.5" r="1.5" fill="currentColor"/><circle cx="8.5" cy="7.5" r="1.5" fill="currentColor"/><circle cx="6.5" cy="12.5" r="1.5" fill="currentColor"/><path d="M12 2a10 10 0 100 20c1.1 0 2-.9 2-2 0-.5-.2-1-.5-1.3-.3-.4-.5-.8-.5-1.2 0-1.1.9-2 2-2h1.5A4.5 4.5 0 0022 11 10 10 0 0012 2z"/></svg>
+    </button>
+    <div class="ss-panel">
+      <p class="ss-title">Accent Color</p>
+      <div class="ss-swatches">
+        <button type="button" class="ss-swatch active" data-accent="lime" style="--sw:#c4f135" aria-label="Lime"></button>
+        <button type="button" class="ss-swatch" data-accent="blue" style="--sw:#4d8dff" aria-label="Blue"></button>
+        <button type="button" class="ss-swatch" data-accent="purple" style="--sw:#a97bff" aria-label="Purple"></button>
+      </div>
+      <p class="ss-title" style="margin-top:16px;">Direction</p>
+      <div class="ss-dirs">
+        <button type="button" class="ss-dir active" data-dir="ltr">LTR</button>
+        <button type="button" class="ss-dir" data-dir="rtl">RTL</button>
+      </div>
+    </div>
+  </div><script src="assets/js/main.js"></script>
+</body>
+</html>

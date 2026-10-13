@@ -1,0 +1,39 @@
+============================================================
+ Pixellize — Personal Portfolio HTML Template
+ Credits & Asset Licensing
+============================================================
+
+FONTS (Google Fonts — SIL Open Font License)
+------------------------------------------------------------
+- Space Grotesk ... https://fonts.google.com/specimen/Space+Grotesk
+- Inter .......... https://fonts.google.com/specimen/Inter
+
+ICONS
+------------------------------------------------------------
+- All icons are custom inline SVG created for this template.
+  No icon font or external library is used — nothing to attribute.
+
+IMAGES (Unsplash — free to use, https://unsplash.com/license)
+------------------------------------------------------------
+Demo photos only. Replace with your own for production use.
+Each line: local file  ->  Unsplash photo page.
+
+hero.jpg            -> https://unsplash.com/photos/1544005313-94ddf0286df2
+about.jpg           -> https://unsplash.com/photos/1498050108023-c5249f4df085
+work-dashboard.jpg  -> https://unsplash.com/photos/1467232004584-a241de8bcf5d
+work-finance.jpg    -> https://unsplash.com/photos/1512941937669-90a1b58e7e9c
+work-design.jpg     -> https://unsplash.com/photos/1545235617-9465d2a55698
+work-ecommerce.jpg  -> https://unsplash.com/photos/1460925895917-afdab827c52f
+work-fitness.jpg    -> https://unsplash.com/photos/1526498460520-4c246339dccb
+work-landing.jpg    -> https://unsplash.com/photos/1558655146-9f40138edfeb
+blog-1.jpg          -> https://unsplash.com/photos/1555066931-4365d14bab8c
+blog-2.jpg          -> https://unsplash.com/photos/1517180102446-f3ece451e9d8
+blog-3.jpg          -> https://unsplash.com/photos/1507721999472-8ed4421c4af2
+avatar-1.jpg        -> https://unsplash.com/photos/1472099645785-5658abf4ff4e
+avatar-2.jpg        -> https://unsplash.com/photos/1494790108377-be9c29b29330
+avatar-3.jpg        -> https://unsplash.com/photos/1507003211169-0a1dd7228f2d
+stats-bg.jpg        -> https://unsplash.com/photos/1542831371-29b0f74f9713
+
+------------------------------------------------------------
+Template code © Pixellize. Licensed per your marketplace purchase.
+============================================================
