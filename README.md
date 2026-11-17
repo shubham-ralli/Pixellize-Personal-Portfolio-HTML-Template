@@ -4,6 +4,8 @@ A modern, fully responsive **one-page personal portfolio** template built with c
 
 Perfect for developers, designers, freelancers and creatives who want a fast, elegant site that stands out.
 
+- **Preview Link** — [https://shubham-ralli.github.io/Pixellize-Personal-Portfolio-HTML-Template](https://shubham-ralli.github.io/Pixellize-Personal-Portfolio-HTML-Template)
+
 ![Pixellize — dark mode](screenshots/home-dark.jpg)
 
 <p align="center"><em>Dark mode</em></p>
